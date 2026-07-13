@@ -6,8 +6,9 @@ public:
         for(int i =0; i<n; i++){
             sum += a[i];
         }
+
         int left = 0;
-        if(sum-a[0]==0) return 0;
+        if(sum-a[0]==0) return 0; //Edgecase
         
         for(int i =1; i<n; i++){
             left += a[i-1];
