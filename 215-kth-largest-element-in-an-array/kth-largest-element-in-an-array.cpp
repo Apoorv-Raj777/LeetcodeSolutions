@@ -1,13 +1,18 @@
 class Solution {
 public:
-    int findKthLargest(vector<int>& arr, int k) {
-        priority_queue<int,vector<int>,greater<int>> minH;
-        int n = arr.size();
-        for(int i =0; i<n ; i++){
-            minH.push(arr[i]);
-            if(minH.size()>k)
-                minH.pop();
+    int findKthLargest(vector<int>& nums, int k) {
+        int n =  nums.size();
+        priority_queue<int, vector<int>,greater<int>>min_heap;
+        for(int i = 0; i<k; i++){
+            min_heap.push(nums[i]);
         }
-        return minH.top();
+        for(int i =k; i<n;i++){
+            if(nums[i]<=min_heap.top())
+               continue;
+            
+            min_heap.pop();
+            min_heap.push(nums[i]);
+        }
+        return min_heap.top();
     }
 };
